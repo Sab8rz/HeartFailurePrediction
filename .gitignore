@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+
+# PyCharm-specific files
+/.idea/
+.idea/
+.DS_Store
+
+# Virtual environment
+venv/
+.env
