@@ -1,6 +1,6 @@
 [flake8]
 exclude = .git,__pycache__,env,.venv,data,models,notebooks
 max-line-length = 79
-ignore = E722
+
 import-order-style = google
 inline-quotes = "
