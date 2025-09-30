@@ -1,0 +1,26 @@
+name: Check lint and format
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4  # Загружаем код
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          pip install pre-commit
+          pip install -r requirements.txt
+
+      - name: Run pre-commit on all files
+        run: pre-commit run --all-files
