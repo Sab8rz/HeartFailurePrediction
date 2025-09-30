@@ -10,5 +10,6 @@ __pycache__/
 venv/
 .env
 
-# Local files
+# Other files
 flake8_errors.txt
+.dvcignore
