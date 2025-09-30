@@ -3,7 +3,7 @@ import datetime
 import csv
 
 
-def loadProjects(path, projects=[]):
+def LoadProjects(path, projects=[]):
     for filename in glob.glob(path):
         with open(filename, "r", encoding="utf-8") as f:
             fields = [
