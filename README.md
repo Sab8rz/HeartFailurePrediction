@@ -1,4 +1,5 @@
 # Предсказание сердечных заболеваний
+Датасет: https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
 
 ## Структура проекта:
 - data - содержит исходные и обработанные данные
