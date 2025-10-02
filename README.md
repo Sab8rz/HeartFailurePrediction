@@ -1,4 +1,10 @@
 # Предсказание сердечных заболеваний
+Датасет: https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
+
+## Ветки
+- main - основная ветка рабочего (продакшн) проекта
+- dev - ветка для DevOps Engineer
+- data-scientist - ветка для Data Scientist
 
 ## Структура проекта:
 - data - содержит исходные и обработанные данные
