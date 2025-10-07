@@ -16,7 +16,7 @@ def load_and_preprocess(input_path: str, output_path: str):
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     df.to_csv(output_path, index=False)
-    print(f"✅ Обработанный датасет сохранён: {output_path}")
+    print(f"Обработанный датасет сохранён: {output_path}")
     print(f"Финальное число признаков: {df.shape[1] - 1}")
     return df
 

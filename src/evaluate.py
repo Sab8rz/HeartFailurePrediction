@@ -20,7 +20,7 @@ def evaluate_model(model_name: str):
     # Загрузка модели
     model = joblib.load(f"models/{model_name}.pkl")
 
-    # Для логистической регрессии — применяем scaler
+    # Для логистической регрессии применяем scaler
     if model_name == "logistic_regression":
         scaler = joblib.load("models/scaler.pkl")
         X_test = scaler.transform(X_test)
@@ -42,7 +42,7 @@ def evaluate_model(model_name: str):
     os.makedirs("reports", exist_ok=True)
     with open(f"reports/{model_name}_metrics.json", "w") as f:
         json.dump(metrics, f, indent=4)
-    print(f"✅ Метрики {model_name} сохранены")
+    print(f"Метрики {model_name} сохранены")
 
 
 def main():

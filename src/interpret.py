@@ -9,5 +9,5 @@ feature_names = df.drop("HeartDisease", axis=1).columns
 coefs = pd.Series(model.coef_[0], index=feature_names)
 coefs_sorted = coefs.abs().sort_values(ascending=False)
 
-print("Топ-5 самых влиятельных признаков (по модулю коэффициента):")
+print("Топ 5 самых влиятельных признаков (по модулю коэффициента):")
 print(coefs_sorted.head())

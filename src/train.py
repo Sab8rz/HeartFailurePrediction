@@ -40,7 +40,7 @@ def main():
     joblib.dump(xgb, "models/xgboost.pkl")
     print("Обучение xgboost...")
 
-    print("✅ Все модели сохранены в папку models/")
+    print("Все модели сохранены в папку 'models'")
 
 
 if __name__ == "__main__":
