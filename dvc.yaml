@@ -1,14 +1,47 @@
 stages:
   preprocess:
-    cmd: python src/preprocessing.py
+    cmd: python src/preprocess.py
     deps:
-      - data/raw/
+      - data/raw/heart.csv
     outs:
-      - data/processed/
+      - data/processed/heart_processed.csv
 
-  train:
+  split_test_set:
     cmd: python src/train.py
     deps:
-      - data/processed/
+      - data/processed/heart_processed.csv
     outs:
-      - models/model.pkl
+      - data/processed/test_set.csv
+
+  train_models:
+    cmd: python src/train.py
+    deps:
+      - data/processed/heart_processed.csv
+    outs:
+      - models/logistic_regression.pkl
+      - models/random_forest.pkl
+      - models/xgboost.pkl
+      - models/scaler.pkl
+
+  evaluate_models:
+    cmd: python src/evaluate.py
+    deps:
+      - data/processed/test_set.csv
+      - models/logistic_regression.pkl
+      - models/random_forest.pkl
+      - models/xgboost.pkl
+      - models/scaler.pkl
+    outs:
+      - reports/logistic_regression_metrics.json
+      - reports/random_forest_metrics.json
+      - reports/xgboost_metrics.json
+
+  select_best_model:
+    cmd: python src/best_model.py
+    deps:
+      - models/logistic_regression.pkl
+      - reports/logistic_regression_metrics.json
+      - reports/random_forest_metrics.json
+      - reports/xgboost_metrics.json
+    outs:
+      - models/best_model.pkl
