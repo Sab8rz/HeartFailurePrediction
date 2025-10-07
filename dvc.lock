@@ -1,0 +1,110 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw/heart.csv
+      hash: md5
+      md5: ab21f2524241ed14b321bcaf40c8b86e
+      size: 35921
+    outs:
+    - path: data/processed/heart_processed.csv
+      hash: md5
+      md5: 4e70078d8c225fa32d7bee77502fb96b
+      size: 62030
+  split_test_set:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/heart_processed.csv
+      hash: md5
+      md5: 4e70078d8c225fa32d7bee77502fb96b
+      size: 62030
+    outs:
+    - path: data/processed/test_set.csv
+      hash: md5
+      md5: e0646fb95ca551320fd0c2e284835221
+      size: 12574
+  train_models:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/heart_processed.csv
+      hash: md5
+      md5: 4e70078d8c225fa32d7bee77502fb96b
+      size: 62030
+    outs:
+    - path: models/logistic_regression.pkl
+      hash: md5
+      md5: 0ce85e5dffccd1ca4acd2e4e7058ddc2
+      size: 991
+    - path: models/random_forest.pkl
+      hash: md5
+      md5: aba9437fc344029f9d463cd8b248f92e
+      size: 1928121
+    - path: models/scaler.pkl
+      hash: md5
+      md5: 84239fab9633932643e038e4fbfc3c3c
+      size: 1423
+    - path: models/xgboost.pkl
+      hash: md5
+      md5: 0397f9ab2d0a6d3d71cd4ec97ab00776
+      size: 178259
+  evaluate_models:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/processed/test_set.csv
+      hash: md5
+      md5: e0646fb95ca551320fd0c2e284835221
+      size: 12574
+    - path: models/logistic_regression.pkl
+      hash: md5
+      md5: 0ce85e5dffccd1ca4acd2e4e7058ddc2
+      size: 991
+    - path: models/random_forest.pkl
+      hash: md5
+      md5: aba9437fc344029f9d463cd8b248f92e
+      size: 1928121
+    - path: models/scaler.pkl
+      hash: md5
+      md5: 84239fab9633932643e038e4fbfc3c3c
+      size: 1423
+    - path: models/xgboost.pkl
+      hash: md5
+      md5: 0397f9ab2d0a6d3d71cd4ec97ab00776
+      size: 178259
+    outs:
+    - path: reports/logistic_regression_metrics.json
+      hash: md5
+      md5: fc1531f459ad9af959f1f321885758ca
+      size: 180
+    - path: reports/random_forest_metrics.json
+      hash: md5
+      md5: c04b5d3d8b56b9a341e39d16d725c69a
+      size: 167
+    - path: reports/xgboost_metrics.json
+      hash: md5
+      md5: 589d14b3316ac7d66c9aa4473d453278
+      size: 180
+  select_best_model:
+    cmd: python src/best_model.py
+    deps:
+    - path: models/logistic_regression.pkl
+      hash: md5
+      md5: 0ce85e5dffccd1ca4acd2e4e7058ddc2
+      size: 991
+    - path: reports/logistic_regression_metrics.json
+      hash: md5
+      md5: fc1531f459ad9af959f1f321885758ca
+      size: 180
+    - path: reports/random_forest_metrics.json
+      hash: md5
+      md5: c04b5d3d8b56b9a341e39d16d725c69a
+      size: 167
+    - path: reports/xgboost_metrics.json
+      hash: md5
+      md5: 589d14b3316ac7d66c9aa4473d453278
+      size: 180
+    outs:
+    - path: models/best_model.pkl
+      hash: md5
+      md5: 0ce85e5dffccd1ca4acd2e4e7058ddc2
+      size: 991
