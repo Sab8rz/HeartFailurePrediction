@@ -15,7 +15,7 @@ from sklearn.metrics import (
 from sklearn.preprocessing import StandardScaler
 
 
-def test_evaluate_model():
+def test_evaluate():
     with tempfile.TemporaryDirectory() as temp_dir:
         os.makedirs(os.path.join(temp_dir, "data", "processed"), exist_ok=True)
         os.makedirs(os.path.join(temp_dir, "models"), exist_ok=True)

@@ -6,18 +6,12 @@ stages:
     outs:
       - data/processed/heart_processed.csv
 
-  split_test_set:
-    cmd: python src/train.py
-    deps:
-      - data/processed/heart_processed.csv
-    outs:
-      - data/processed/test_set.csv
-
   train_models:
     cmd: python src/train.py
     deps:
       - data/processed/heart_processed.csv
     outs:
+      - data/processed/test_set.csv
       - models/logistic_regression.pkl
       - models/random_forest.pkl
       - models/xgboost.pkl
@@ -35,13 +29,3 @@ stages:
       - reports/logistic_regression_metrics.json
       - reports/random_forest_metrics.json
       - reports/xgboost_metrics.json
-
-  select_best_model:
-    cmd: python src/best_model.py
-    deps:
-      - models/logistic_regression.pkl
-      - reports/logistic_regression_metrics.json
-      - reports/random_forest_metrics.json
-      - reports/xgboost_metrics.json
-    outs:
-      - models/best_model.pkl

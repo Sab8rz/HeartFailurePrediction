@@ -5,7 +5,7 @@ import pandas as pd
 from src.preprocess import load_and_preprocess
 
 
-def test_load_and_preprocess():
+def test_preprocess():
     with tempfile.TemporaryDirectory() as temp_dir:
         input_path = os.path.join(temp_dir, "heart.csv")
         output_path = os.path.join(temp_dir, "heart_processed.csv")

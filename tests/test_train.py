@@ -10,7 +10,7 @@ from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
 
 
-def test_train_models():
+def test_train():
     with tempfile.TemporaryDirectory() as temp_dir:
         os.makedirs(os.path.join(temp_dir, "data", "processed"), exist_ok=True)
         os.makedirs(os.path.join(temp_dir, "models"), exist_ok=True)
