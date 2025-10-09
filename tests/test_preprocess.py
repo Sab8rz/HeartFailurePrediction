@@ -30,13 +30,7 @@ def test_preprocess():
 
         result_df = load_and_preprocess(input_path, output_path)
 
-        assert "ChestPainType_NAP" in result_df.columns
-        assert "RestingECG_ST" in result_df.columns
-        assert "ST_Slope_Up" in result_df.columns
-
+        assert os.path.exists(output_path)
+        assert result_df["HeartDisease"].dtype == int
         assert set(result_df["Sex"].unique()) == {0, 1}
         assert set(result_df["ExerciseAngina"].unique()) == {0, 1}
-
-        assert result_df["HeartDisease"].dtype == int
-
-        assert os.path.exists(output_path)

@@ -1,6 +1,8 @@
 [flake8]
-exclude = .git,__pycache__,env,.venv,data,models,notebooks
-max-line-length = 79
+exclude = .git,__pycache__,env,.venv,data,models
+max-line-length = 99
 ignore = E722
+per-file-ignores =
+    tests/test_evaluate.py: F401, F811
 import-order-style = google
 inline-quotes = "

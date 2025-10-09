@@ -16,9 +16,7 @@ def main():
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42, stratify=y
     )
-    pd.concat([X_test, y_test], axis=1).to_csv(
-        "data/processed/test_set.csv", index=False
-    )
+    pd.concat([X_test, y_test], axis=1).to_csv("data/processed/test_set.csv", index=False)
 
     os.makedirs("models", exist_ok=True)
 

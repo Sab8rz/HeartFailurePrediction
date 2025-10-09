@@ -6,7 +6,7 @@ stages:
     outs:
       - data/processed/heart_processed.csv
 
-  train_models:
+  train:
     cmd: python src/train.py
     deps:
       - data/processed/heart_processed.csv
@@ -17,7 +17,7 @@ stages:
       - models/xgboost.pkl
       - models/scaler.pkl
 
-  evaluate_models:
+  evaluate:
     cmd: python src/evaluate.py
     deps:
       - data/processed/test_set.csv

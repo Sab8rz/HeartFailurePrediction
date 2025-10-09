@@ -32,6 +32,10 @@ stages:
       md5: 4e70078d8c225fa32d7bee77502fb96b
       size: 62030
     outs:
+    - path: data/processed/test_set.csv
+      hash: md5
+      md5: e0646fb95ca551320fd0c2e284835221
+      size: 12574
     - path: models/logistic_regression.pkl
       hash: md5
       md5: 0ce85e5dffccd1ca4acd2e4e7058ddc2
