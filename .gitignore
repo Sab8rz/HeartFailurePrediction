@@ -13,3 +13,5 @@ venv/
 # Other files
 flake8_errors.txt
 .dvcignore
+.dvc/cache/
+.dvc/tmp/
