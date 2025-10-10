@@ -12,18 +12,18 @@ def test_preprocess():
 
         df = pd.DataFrame(
             {
-                "Age": [40, 50],
-                "Sex": ["M", "F"],
-                "ChestPainType": ["ATA", "NAP"],
-                "RestingBP": [140, 160],
-                "Cholesterol": [289, 180],
-                "FastingBS": [0, 0],
-                "RestingECG": ["Normal", "ST"],
-                "MaxHR": [172, 156],
-                "ExerciseAngina": ["N", "Y"],
-                "Oldpeak": [0.0, 1.0],
-                "ST_Slope": ["Up", "Flat"],
-                "HeartDisease": [0, 1],
+                "Age": [40, 50, 30],
+                "Sex": ["M", "F", "M"],
+                "ChestPainType": ["ATA", "NAP", "NAP"],
+                "RestingBP": [140, 160, 0],
+                "Cholesterol": [289, 180, 0],
+                "FastingBS": [0, 0, 0],
+                "RestingECG": ["Normal", "ST", "Normal"],
+                "MaxHR": [172, 156, 134],
+                "ExerciseAngina": ["N", "Y", "N"],
+                "Oldpeak": [0.0, 1.0, 1.0],
+                "ST_Slope": ["Up", "Flat", "Up"],
+                "HeartDisease": [0, 1, 1],
             }
         )
         df.to_csv(input_path, index=False)
@@ -34,3 +34,5 @@ def test_preprocess():
         assert result_df["HeartDisease"].dtype == int
         assert set(result_df["Sex"].unique()) == {0, 1}
         assert set(result_df["ExerciseAngina"].unique()) == {0, 1}
+        assert (result_df["RestingBP"] != 0).all()
+        assert (result_df["Cholesterol"] != 0).all()

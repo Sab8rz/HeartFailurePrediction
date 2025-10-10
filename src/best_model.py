@@ -1,3 +1,3 @@
 import joblib
 
-joblib.dump(joblib.load("models/logistic_regression.pkl"), "models/best_model.pkl")
+joblib.dump(joblib.load("models/random_forest.pkl"), "models/best_model.pkl")

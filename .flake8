@@ -4,5 +4,6 @@ max-line-length = 99
 ignore = E722
 per-file-ignores =
     tests/test_evaluate.py: F401, F811
+    tests/test_train.py: W292
 import-order-style = google
 inline-quotes = "

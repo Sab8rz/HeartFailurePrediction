@@ -1,10 +1,10 @@
-import pandas as pd
 import os
+
+import pandas as pd
 
 
 def load_and_preprocess(input_path: str, output_path: str):
     df = pd.read_csv(input_path)
-    print(f"Загружено {df.shape[0]} строк, {df.shape[1]} признаков.")
 
     df["Sex"] = df["Sex"].map({"M": 1, "F": 0})
     df["ExerciseAngina"] = df["ExerciseAngina"].map({"Y": 1, "N": 0})
@@ -16,8 +16,15 @@ def load_and_preprocess(input_path: str, output_path: str):
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     df.to_csv(output_path, index=False)
-    print(f"Обработанный датасет сохранён: {output_path}")
-    print(f"Финальное число признаков: {df.shape[1] - 1}")
+
+    if (df["Cholesterol"] == 0).any():
+        median_chol = df[df["Cholesterol"] > 0]["Cholesterol"].median()
+        df["Cholesterol"] = df["Cholesterol"].replace(0, median_chol)
+
+    if (df["RestingBP"] == 0).any():
+        median_bp = df[df["RestingBP"] > 0]["RestingBP"].median()
+        df["RestingBP"] = df["RestingBP"].replace(0, median_bp)
+
     return df
 
 
