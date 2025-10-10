@@ -15,15 +15,22 @@ from xgboost import XGBClassifier
 def df():
     df = pd.DataFrame(
         {
-            "Age": [40, 50, 60, 45, 55, 65],
-            "Sex": [1, 0, 1, 0, 1, 0],
-            "ChestPainType_NAP": [0, 1, 0, 1, 0, 1],
-            "RestingECG_Normal": [1, 0, 1, 0, 1, 0],
-            "MaxHR": [172, 156, 140, 160, 150, 130],
-            "ExerciseAngina": [0, 1, 0, 1, 0, 1],
-            "Oldpeak": [0.0, 1.0, 2.0, 1.5, 0.5, 2.5],
-            "ST_Slope_Up": [1, 0, 1, 0, 1, 0],
+            "Age": [40, 50, 60, 30, 34, 21],
+            "Sex": [1, 0, 1, 1, 0, 0],
+            "RestingBP": [140, 150, 130, 128, 234, 211],
+            "Cholesterol": [289, 180, 304, 300, 200, 100],
+            "FastingBS": [0, 1, 0, 1, 1, 0],
+            "MaxHR": [172, 156, 98, 100, 125, 123],
+            "ExerciseAngina": [0, 1, 0, 0, 0, 1],
+            "Oldpeak": [0.0, 1.0, 2.0, 3.0, 4.0, 2.6],
             "HeartDisease": [0, 1, 0, 1, 0, 1],
+            "ChestPainType_ATA": [1, 0, 1, 1, 1, 0],
+            "ChestPainType_NAP": [0, 1, 0, 0, 0, 1],
+            "ChestPainType_TA": [0, 0, 1, 1, 0, 0],
+            "RestingECG_Normal": [1, 0, 1, 0, 1, 1],
+            "RestingECG_ST": [1, 0, 1, 0, 1, 1],
+            "ST_Slope_Flat": [1, 0, 1, 0, 1, 0],
+            "ST_Slope_Up": [0, 1, 0, 0, 1, 0],
         }
     )
     return df
